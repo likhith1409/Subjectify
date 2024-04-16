@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjectify</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="static\images\Subjectify logo.png">
+  
+</head>
+<body>
+  <div id="navbar">
+    <nav class="navbar-container container">
+      <a href="index.html" class="home-link">
+        <img src="images\Subjectify logo.png" alt="Subjectify Logo" class="navbar-logo">
+        Subjectify
+      </a>
+    
+      <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <li class="navbar-item"><a class="navbar-link" href="pdfs.html">PDFs</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="CheetSheets.html">CheatSheet</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>  
+  </div>
+
+  <div class="subject-container">
+
+    <section class="subject">
+        <h2>Blender Hotkey Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_blender_v2.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>C Programming Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_c.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Java Programming Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_java.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>JavaScript Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_javascript-2021.7.19 (1).pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Kubectl Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_kubectl.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Linux Common Commands Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_linux_common_commands.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>SQLite3 Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/cheat_sheet_sqlite_0.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Git Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/OSDC_cheatsheet-git-2022.4.7.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Kubernetes Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/osdc_cheatsheet-kubernetes-2021.4.16.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Perl Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/osdc_cheatsheet-perl-2022.01.28.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    <section class="subject">
+        <h2>Raspberry Pi Cheat Sheet</h2>
+        <div class="actions">
+            
+            <button class="download-pdf-btn" data-pdf="Cheatsheet/raspberry_pi_cheatsheet_from_opensource.com_.pdf">Download PDF</button>
+        </div>
+        
+    </section>
+
+    
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchParams = new URLSearchParams(window.location.search);
+        const query = searchParams.get('search');
+
+        if (query) {
+            searchNotes(query);
+        }
+
+        
+        const downloadButtons = document.querySelectorAll('.download-pdf-btn');
+        downloadButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const pdfUrl = this.getAttribute('data-pdf');
+                openPdf(pdfUrl);
+            });
+        });
+    });
+
+    function openPdf(pdfUrl) {
+        
+        window.open(pdfUrl, '_blank');
+    }
+
+    function searchNotes(query) {
+        
+        const notes = document.querySelectorAll('.subject');
+        
+        
+        const lowercaseQuery = query.toLowerCase();
+
+        
+        notes.forEach(note => {
+            const title = note.querySelector('h2').textContent.toLowerCase();
+            
+            
+            if (title.includes(lowercaseQuery)) {
+                note.style.display = 'block';
+            } else {
+                note.style.display = 'none';
+            }
+        });
+    }
+  </script>
+
+
+    
+    
+
+  
+
+  <footer>
+    <p>Copyright &copy; 2024 Subjectify. All rights reserved. Maintained by N Likhith Reddy.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

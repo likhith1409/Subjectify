@@ -1,237 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Subjectify</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjectify</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="static\images\Subjectify logo.png">
 </head>
-
 <body>
-    <header>
-        <h1>Subjectify</h1>
-        <div class="additional-buttons">
-            <button class="unique-button-1">Pdf's</button>
-            <button class="unique-button-2">ImpQ&Pyp</button>
-            <button class="unique-button-3">Develop</button>
-        </div>
-        <div class="search-container">
-            <div class="search">
-                <div class="search-box">
-                <div class="search-field">
-                    <input placeholder="Search..." class="input" type="text">
-                    <div class="search-box-icon">
-                    <button class="btn-icon-content">
-                        <i class="search-icon">
-                        <svg xmlns="://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" fill="#fff"></path></svg>
-                        </i>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </header>
+  <header id="navbar">
+    <nav class="navbar-container container">
+      <a href="index.html" class="home-link">
+        <img src="images\Subjectify logo.png" alt="Subjectify Logo" class="navbar-logo">
+        Subjectify
+      </a>
     
-    <main>
+      <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <li class="navbar-item"><a class="navbar-link" href="pdfs.html">PDFs</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="CheetSheets.html">CheatSheet</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section id="image-section">
+        <div class="image-container">
+          <img src="images\leafs.png" alt="Left Image" class="lefimg">
+        </div>
+        <div class="image-container">
+            <img src="images\Daco_7374.png" alt="Left Image" class="midimg">
+            <h1 class="head1">Subjectify</h1>
+            <p class="par1">Welcome to Subjectify, your one-stop hub for subject notes, where knowledge meets convenience. Dive into a world of curated summaries spanning various subjects, designed to streamline your learning journey. Say goodbye to information overload and hello to focused, efficient studying with Subjectify</p>
+            <form class="custom-form">
+              <label for="search-input">
+                  <input class="custom-input" type="text" required="" placeholder="Search Notes Here..." id="search-input" name="search-input">
+                  <div class="custom-fancy-bg"></div>
+                  <div class="custom-search-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <g>
+                              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                          </g>
+                      </svg>
+                  </div>
+                  <button class="custom-close-btn" type="reset">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                      </svg>
+                  </button>
+              </label>
+              <div id="suggestions"></div>
+              <button type="submit" style="display:none"></button> 
+            </form>
 
-        
-
-        <section class="subject">
-            <h2>Machine Learning Unit-1</h2>
-            <div class="thumbnail">
-                <img src="images/mlunit1.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/unit1 ml.pdf">Download PDF</button>
-            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                  const searchInput = document.getElementById('search-input');
+                  const form = document.querySelector('.custom-form');
+                  const suggestionsContainer = document.getElementById('suggestions');
+                  let selectedIndex = -1;
+                  let fullQueryEntered = false;
+          
+                  
+                  form.addEventListener('submit', function (event) {
+                      event.preventDefault(); 
+                      const query = searchInput.value.trim(); 
+          
+                      if (query.length > 0) {
+                          
+                          if (fullQueryEntered) {
+                              window.location.href = `pdfs.html?search=${query}`;
+                          } else {
+                             
+                              window.location.href = `CheetSheets.html?search=${query}`;
+                          }
+                      }
+                  });
+          
+                  
+                  searchInput.addEventListener('input', function () {
+                      const query = searchInput.value.trim().toLowerCase(); 
+          
+                      
+                      suggestionsContainer.innerHTML = '';
+                      selectedIndex = -1;
+          
+                      
+                      const manualSuggestionsPDF = [
+                          "Machine Learning Unit-1",
+                          "Machine Learning Unit-2",
+                          "Compiler Design Unit-1",
+                          "Compiler Design Unit-2 Part-1",
+                          "Compiler Design Unit-2 Part-2",
+                          "IRS Unit-3",
+                          "Computer Network All Units",
+                          "Computer Network Unit-2",
+                          "Computer Network Unit-4",
+                          "Computer Network Unit-3",
+                          "Java Unit-1,2,3,4",
+                          "Java Unit-5",
+                          "Machine Learning Unit-3",
+                          "Machine Learning Unit-4",
+                          "Machine Learning Unit-5",
+                          "Compiler Design Unit-5",
+                          
+                          
+                      ];
+          
+                      
+                      const manualSuggestionsCheetSheet = [
+                          "Blender Hotkey Cheat Sheet",
+                          "C Programming Cheat Sheet",
+                          "Java Programming Cheat Sheet",
+                          "JavaScript Cheat Sheet",
+                          "Kubectl Cheat Sheet",
+                          "Linux Common Commands Cheat Sheet",
+                          "SQLite3 Cheat Sheet",
+                          "Git Cheat Sheet",
+                          "Kubernetes Cheat Sheet",
+                          "Perl Cheat Sheet",
+                          "Raspberry Pi Cheat Sheet",
+                         
+                      ];
+          
+                      
+                      manualSuggestionsPDF.forEach((suggestion, index) => {
+                          if (suggestion.toLowerCase().includes(query)) {
+                              const suggestionElement = createSuggestionElement(suggestion, index, true);
+                              suggestionsContainer.appendChild(suggestionElement);
+                          }
+                      });
+          
+                      
+                      manualSuggestionsCheetSheet.forEach((suggestion, index) => {
+                          if (suggestion.toLowerCase().includes(query)) {
+                              const suggestionElement = createSuggestionElement(suggestion, index, false);
+                              suggestionsContainer.appendChild(suggestionElement);
+                          }
+                      });
+          
+                      
+                      suggestionsContainer.style.display = query.length > 0 ? 'block' : 'none';
+          
+                      
+                      fullQueryEntered = [...manualSuggestionsPDF, ...manualSuggestionsCheetSheet].some(suggestion => suggestion.toLowerCase() === query);
+                  });
+          
+                 
+                  searchInput.addEventListener('keydown', function (event) {
+                      if (event.key === 'ArrowDown') {
+                          event.preventDefault(); 
+                          selectedIndex = Math.min(selectedIndex + 1, suggestionsContainer.children.length - 1);
+                          highlightSelectedSuggestion();
+                      } else if (event.key === 'ArrowUp') {
+                          event.preventDefault(); 
+                          selectedIndex = Math.max(selectedIndex - 1, -1);
+                          highlightSelectedSuggestion();
+                      } else if (event.key === 'Enter' && selectedIndex !== -1 && document.activeElement === searchInput) {
+                          const selectedSuggestion = suggestionsContainer.children[selectedIndex];
+                          if (selectedSuggestion) {
+                              const query = selectedSuggestion.textContent.trim();
+                              const page = fullQueryEntered ? 'pdfs.html' : 'CheetSheets.html';
+                              window.location.href = `${page}?search=${encodeURIComponent(query)}`;
+                          }
+                      }
+                  });
+          
+                  
+                  function highlightSelectedSuggestion() {
+                      const suggestions = suggestionsContainer.querySelectorAll('.suggestion');
+                      suggestions.forEach((suggestion, index) => {
+                          if (index === selectedIndex) {
+                              suggestion.classList.add('selected');
+                          } else {
+                              suggestion.classList.remove('selected');
+                          }
+                      });
+                  }
+          
+                  
+                  function createSuggestionElement(suggestion, index, isPDF) {
+                      const suggestionElement = document.createElement('div');
+                      suggestionElement.classList.add('suggestion');
+                      suggestionElement.textContent = suggestion;
+                      suggestionElement.addEventListener('click', function () {
+                          const page = isPDF ? 'pdfs.html' : 'CheetSheets.html';
+                          window.location.href = `${page}?search=${encodeURIComponent(suggestion)}`;
+                      });
+                      suggestionElement.addEventListener('mouseover', function () {
+                          selectedIndex = index;
+                          highlightSelectedSuggestion();
+                      });
+                      return suggestionElement;
+                  }
+              });
+            </script>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
             
-        </section>
+          
+            
+          
+            
+        </div>
+        <div class="image-container">
+          <img src="images\leafs.png" alt="Right Image" class="rigimg">
+        </div>
+    </section>
+  </header>
 
-        <section class="subject">
-            <h2>Machine Learning Unit-2</h2>
-            <div class="thumbnail">
-                <img src="images/mlunit2.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/unit 2 ml.pdf">Download PDF</button>
-            </div>
-        </section>
+  <footer>
+    <p>Copyright &copy; 2024 Subjectify. All rights reserved. Maintained by N Likhith Reddy.</p>
+  </footer>
 
-        <section class="subject">
-            <h2>Machine Learning Unit-3</h2>
-            <div class="thumbnail">
-                <img src="images/mlunit3.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/ml-3rd-unit-ml-unit-3-notes.pdf">Download PDF</button>
-            </div>
-        </section>
 
-        <section class="subject">
-            <h2>Machine Learning Unit-4</h2>
-            <div class="thumbnail">
-                <img src="images/unitml4.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/ml unit 4.pdf">Download PDF</button>
-            </div>
-        </section>
 
-        <section class="subject">
-            <h2>Machine Learning Unit-5</h2>
-            <div class="thumbnail">
-                <img src="images/mlunit5.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/unit 5.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Compiler Design Unit-5</h2>
-            <div class="thumbnail">
-                <img src="images/cdunit5.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/compiler design  unit5 notes.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Compiler Design Unit-1</h2>
-            <div class="thumbnail">
-                <img src="images/cdunit1.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/compiler design-unit1.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Compiler Design Unit-1</h2>
-            <div class="thumbnail">
-                <img src="images/cdunit1(1).png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/Compiler Design Unit-1.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Compiler Design Unit-2 Part-1</h2>
-            <div class="thumbnail">
-                <img src="images/cdunit1.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/CD UNIT- II PART-1.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Compiler Design Unit-2 Part-2</h2>
-            <div class="thumbnail">
-                <img src="images/cdunit2part2.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/CD UNIT - II PART - 2.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>IRS Unit-3</h2>
-            <div class="thumbnail">
-                <img src="images/irs unit3.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/irs-unit-3-information-retrieval-systems-unit-3.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Computer Network All Units</h2>
-            <div class="thumbnail">
-                <img src="images/cnall.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/COMPUTER NETWORKS NOTES (1 to 5 units) WORD DOCUMENT.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Computer Network Unit-2</h2>
-            <div class="thumbnail">
-                <img src="images/cnunit2.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                <button class="download-pdf-btn" data-pdf="pdfs/Unit 2 cn.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Computer Network Unit-4</h2>
-            <div class="thumbnail">
-                <img src="images/cnunit4.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                <button class="download-pdf-btn" data-pdf="pdfs/UNIT 4 -TransportLayer.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Computer Network Unit-3</h2>
-            <div class="thumbnail">
-                <img src="images/cnunit3.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/Cn unit 3 .pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Java Unit-1,2,3,4</h2>
-            <div class="thumbnail">
-                <img src="images/javaunits.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/Java1234.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        <section class="subject">
-            <h2>Java Unit-5</h2>
-            <div class="thumbnail">
-                <img src="images/javaunit5.png" alt="Subject 1 Thumbnail">
-            </div>
-            <div class="actions">
-                
-                <button class="download-pdf-btn" data-pdf="pdfs/Java unit5.pdf">Download PDF</button>
-            </div>
-        </section>
-
-        
-    </main>
-
-    <div class="coming-soon-container">
-        <p>More subjects and PDFs coming soon!</p>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
+
