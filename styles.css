@@ -196,6 +196,8 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 20px; 
+    height: calc(100vh - 50px); /* Adjust 50px if your header/footer height is different */
+    overflow-y: auto;
     
 }
   
@@ -292,6 +294,9 @@ body {
     #image-section {
         flex-direction: column;
         align-items: center;
+        margin-top: -20px;
+        height: calc(100vh - 50px); /* Adjust 50px if your header/footer height is different */
+        overflow-y: auto;
     }
 
     .image-container {
@@ -897,6 +902,18 @@ footer {
     background-color: #c2ece4;
     color: black;
 }
+
+@media screen and (max-width: 600px) {
+    #suggestions {
+        top: calc(100% + 3px);
+        max-height: 150px;
+    }
+  
+    .suggestion-item {
+        padding: 8px;
+    }
+}
+
   
 
 

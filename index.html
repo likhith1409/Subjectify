@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subjectify</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="static\images\Subjectify logo.png">
+  <link rel="icon" type="image/png" href="images\Subjectify logo.png">
 </head>
 <body>
   <header id="navbar">
@@ -28,33 +28,36 @@
         </ul>
       </div>
     </nav>
+  
     <section id="image-section">
         <div class="image-container">
           <img src="images\leafs.png" alt="Left Image" class="lefimg">
         </div>
         <div class="image-container">
+            
+
             <img src="images\Daco_7374.png" alt="Left Image" class="midimg">
             <h1 class="head1">Subjectify</h1>
             <p class="par1">Welcome to Subjectify, your one-stop hub for subject notes, where knowledge meets convenience. Dive into a world of curated summaries spanning various subjects, designed to streamline your learning journey. Say goodbye to information overload and hello to focused, efficient studying with Subjectify</p>
             <form class="custom-form">
-              <label for="search-input">
-                  <input class="custom-input" type="text" required="" placeholder="Search Notes Here..." id="search-input" name="search-input">
-                  <div class="custom-fancy-bg"></div>
-                  <div class="custom-search-icon">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <g>
-                              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-                          </g>
-                      </svg>
-                  </div>
-                  <button class="custom-close-btn" type="reset">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                      </svg>
-                  </button>
-              </label>
-              <div id="suggestions"></div>
-              <button type="submit" style="display:none"></button> 
+                <label for="search-input">
+                    <input class="custom-input" type="text" required="" placeholder="Search Notes Here..." id="search-input" name="search-input">
+                    <div class="custom-fancy-bg"></div>
+                    <div class="custom-search-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <g>
+                                <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <button class="custom-close-btn" type="reset">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </label>
+                <div id="suggestions"></div>
+                <button type="submit" style="display:none"></button> 
             </form>
 
             <script>
@@ -113,17 +116,46 @@
           
                       
                       const manualSuggestionsCheetSheet = [
-                          "Blender Hotkey Cheat Sheet",
-                          "C Programming Cheat Sheet",
-                          "Java Programming Cheat Sheet",
-                          "JavaScript Cheat Sheet",
-                          "Kubectl Cheat Sheet",
-                          "Linux Common Commands Cheat Sheet",
-                          "SQLite3 Cheat Sheet",
-                          "Git Cheat Sheet",
-                          "Kubernetes Cheat Sheet",
-                          "Perl Cheat Sheet",
-                          "Raspberry Pi Cheat Sheet",
+                        "Java Fundamentals Cheat Sheet",
+                        "Python For Data Science SciPy Cheat Sheet",
+                        "Python For Data Science Scikit-Learn Cheat Sheet",
+                        "Web Programming Cheat Sheet",
+                        "Web Programming Exam Cheat Sheet",
+                        "Git Cheat Sheet",
+                        "sqlite3 Cheat Sheet",
+                        "Python For Data Science PySpark SQL Basics Cheat Sheet",
+                        "Python For Data Science PySpark RDD Cheat Sheet",
+                        "JavaScript Cheat Sheet",
+                        "C Cheat Sheet",
+                        "Python For Data Science Pandas Basics Cheat Sheet",
+                        "MongoDB Cheat Sheet",
+                        "Neural Networks",
+                        "Python For Data Science NumPy Cheat Sheet",
+                        "Python For Data Science Matplotlib Cheat Sheet",
+                        "Machine Learning Interview Cheat sheets",
+                        "PHP Cheat Sheet",
+                        "Python For Data Science Keras Cheat Sheet",
+                        "Python For Data Science Jupyter Cheat Sheet",
+                        "HTML Cheatsheet",
+                        "Rails 4 Cheat Sheet",
+                        "Regular Expressions Cheat Sheet",
+                        "Python Cheat Sheet",
+                        "MySQL Cheat Sheet",
+                        "JavaScript Cheat Sheet",
+                        "Data Wrangling with dplyr and tidyr Cheat Sheet",
+                        "Python For Data Science",
+                        "Objective-C Cheat Sheet",
+                        "Blender Hotkey Cheat Sheet",
+                        "C Programming Cheat Sheet",
+                        "Java Programming Cheat Sheet",
+                        "JavaScript Cheat Sheet",
+                        "Kubectl Cheat Sheet",
+                        "Linux Common Commands Cheat Sheet",
+                        "SQLite3 Cheat Sheet",
+                        "Git Cheat Sheet",
+                        "Kubernetes Cheat Sheet",
+                        "Perl Cheat Sheet",
+                        "Raspberry Pi Cheat Sheet"
                          
                       ];
           
@@ -200,30 +232,14 @@
               });
             </script>
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-            
-          
-            
-          
-            
+  
         </div>
         <div class="image-container">
           <img src="images\leafs.png" alt="Right Image" class="rigimg">
         </div>
     </section>
   </header>
+  
 
   <footer>
     <p>Copyright &copy; 2024 Subjectify. All rights reserved. Maintained by N Likhith Reddy.</p>
