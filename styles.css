@@ -833,7 +833,18 @@ footer {
     text-decoration: none;
     border-radius: 20px; 
     transition: background-color 0.3s ease;
-  }
+}
+
+.about-right .btn1 {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px; 
+    transition: background-color 0.3s ease;
+}
   
   .about-right .btn:hover {
     background-color: #555;
@@ -847,7 +858,6 @@ footer {
         margin: 0 auto;
         margin-left: 50px;
     }
-      
   
     .about-container {
       flex-direction: column; 
