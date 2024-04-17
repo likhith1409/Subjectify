@@ -15,4 +15,3 @@ navbarMenu.addEventListener("click", toggleNavbarVisibility);
 
 
 
-
