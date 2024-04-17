@@ -884,8 +884,7 @@ footer {
     top: calc(100% + 5px); 
     left: 0;
     width: 100%;
-    max-height: 200px; 
-    overflow-y: auto;
+    max-height: auto; 
     background-color: #3a3c51;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -906,14 +905,13 @@ footer {
 @media screen and (max-width: 600px) {
     #suggestions {
         top: calc(100% + 3px);
-        max-height: 150px;
+        max-height: auto;
     }
   
     .suggestion-item {
         padding: 8px;
     }
 }
-
   
 
 
