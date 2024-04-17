@@ -885,7 +885,7 @@ footer {
   
     
     .about-right .btn {
-      margin-top: 20px; 
+      margin-top: 2px; 
     }
   }
 
@@ -1023,4 +1023,10 @@ footer {
 .actions button:hover {
     background-color: #5e81ac;
     color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    footer {
+        display: none;
+    }
 }
